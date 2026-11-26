@@ -1,4 +1,5 @@
 import { getToken } from "../state/session";
+import { API_URL } from "./config";
 
 export type Pet = {
   id: number;
@@ -13,7 +14,7 @@ export type Pet = {
 
 export async function getNearbyPets(lat: number, lng: number): Promise<Pet[]> {
   const response = await fetch(
-    `http://localhost:3000/pets-nearby?lat=${lat}&lng=${lng}`,
+    `${API_URL}/pets-nearby?lat=${lat}&lng=${lng}`,
   );
 
   if (!response.ok) {
@@ -26,7 +27,7 @@ export async function getNearbyPets(lat: number, lng: number): Promise<Pet[]> {
 export async function getMyPets(): Promise<Pet[]> {
   const token = getToken();
 
-  const response = await fetch("http://localhost:3000/pets/mine", {
+  const response = await fetch(`${API_URL}/pets/mine`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -40,6 +41,7 @@ export async function getMyPets(): Promise<Pet[]> {
 
   return result;
 }
+
 type UpdatePetInput = {
   name?: string;
   imageData?: string;
@@ -49,7 +51,7 @@ type UpdatePetInput = {
 };
 
 export async function getPetById(petId: number): Promise<Pet> {
-  const response = await fetch(`http://localhost:3000/pets/${petId}`);
+  const response = await fetch(`${API_URL}/pets/${petId}`);
 
   const result = await response.json();
 
@@ -63,7 +65,7 @@ export async function getPetById(petId: number): Promise<Pet> {
 export async function updatePet(petId: number, data: UpdatePetInput) {
   const token = getToken();
 
-  const response = await fetch(`http://localhost:3000/pets/${petId}`, {
+  const response = await fetch(`${API_URL}/pets/${petId}`, {
     method: "PATCH",
 
     headers: {
@@ -86,7 +88,7 @@ export async function updatePet(petId: number, data: UpdatePetInput) {
 export async function markPetAsFound(petId: number) {
   const token = getToken();
 
-  const response = await fetch(`http://localhost:3000/pets/${petId}/found`, {
+  const response = await fetch(`${API_URL}/pets/${petId}/found`, {
     method: "PATCH",
 
     headers: {
@@ -106,7 +108,7 @@ export async function markPetAsFound(petId: number) {
 export async function deletePet(petId: number) {
   const token = getToken();
 
-  const response = await fetch(`http://localhost:3000/pets/${petId}`, {
+  const response = await fetch(`${API_URL}/pets/${petId}`, {
     method: "DELETE",
 
     headers: {
@@ -122,6 +124,7 @@ export async function deletePet(petId: number) {
 
   return result;
 }
+
 type CreatePetInput = {
   name: string;
   imageData: string;
@@ -133,7 +136,7 @@ type CreatePetInput = {
 export async function createPet(data: CreatePetInput) {
   const token = getToken();
 
-  const response = await fetch("http://localhost:3000/pets", {
+  const response = await fetch(`${API_URL}/pets`, {
     method: "POST",
 
     headers: {

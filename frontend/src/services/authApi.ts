@@ -1,3 +1,5 @@
+import { API_URL } from "./config";
+
 type RegisterInput = {
   email: string;
   password: string;
@@ -10,7 +12,7 @@ type LoginInput = {
 };
 
 export async function registerUser(data: RegisterInput) {
-  const response = await fetch("http://localhost:3000/auth/register", {
+  const response = await fetch(`${API_URL}/auth/register`, {
     method: "POST",
 
     headers: {
@@ -30,7 +32,7 @@ export async function registerUser(data: RegisterInput) {
 }
 
 export async function loginUser(data: LoginInput) {
-  const response = await fetch("http://localhost:3000/auth/login", {
+  const response = await fetch(`${API_URL}/auth/login`, {
     method: "POST",
 
     headers: {

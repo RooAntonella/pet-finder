@@ -1,8 +1,10 @@
 import { getToken } from "../state/session";
 import { renderAppHeader, setupAppHeader } from "../components/appHeader";
+import { API_URL } from "../services/config";
+
 export function renderPasswordPage() {
   return `
-     ${renderAppHeader()}
+    ${renderAppHeader()}
     <main class="profile-page">
       <h1>Contraseña</h1>
 
@@ -44,6 +46,7 @@ export function renderPasswordPage() {
 
 export function setupPasswordPage() {
   setupAppHeader();
+
   const form = document.querySelector<HTMLFormElement>("#password-form")!;
 
   const passwordInput =
@@ -66,7 +69,7 @@ export function setupPasswordPage() {
     try {
       message.textContent = "Guardando...";
 
-      const response = await fetch("http://localhost:3000/me/password", {
+      const response = await fetch(`${API_URL}/me/password`, {
         method: "PATCH",
 
         headers: {

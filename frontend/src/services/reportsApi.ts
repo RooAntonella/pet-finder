@@ -1,3 +1,5 @@
+import { API_URL } from "./config";
+
 type CreateReportInput = {
   reporterName: string;
   reporterPhone: string;
@@ -5,7 +7,7 @@ type CreateReportInput = {
 };
 
 export async function createReport(petId: number, data: CreateReportInput) {
-  const response = await fetch(`http://localhost:3000/pets/${petId}/reports`, {
+  const response = await fetch(`${API_URL}/pets/${petId}/reports`, {
     method: "POST",
 
     headers: {

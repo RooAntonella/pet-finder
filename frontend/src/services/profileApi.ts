@@ -1,9 +1,10 @@
 import { getToken } from "../state/session";
+import { API_URL } from "./config";
 
 export async function getMyProfile() {
   const token = getToken();
 
-  const response = await fetch("http://localhost:3000/me", {
+  const response = await fetch(`${API_URL}/me`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -26,7 +27,7 @@ type UpdateProfileInput = {
 export async function updateMyProfile(data: UpdateProfileInput) {
   const token = getToken();
 
-  const response = await fetch("http://localhost:3000/me", {
+  const response = await fetch(`${API_URL}/me`, {
     method: "PATCH",
 
     headers: {
@@ -57,7 +58,7 @@ type CreatePetInput = {
 export async function createPet(data: CreatePetInput) {
   const token = getToken();
 
-  const response = await fetch("http://localhost:3000/pets", {
+  const response = await fetch(`${API_URL}/pets`, {
     method: "POST",
 
     headers: {
