@@ -1,0 +1,806 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #17211e;
+  background: #f5f7f6;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-width: 320px;
+  background: #f5f7f6;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+main {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 28px 24px 40px;
+}
+
+h1 {
+  margin: 0 0 24px;
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+h2 {
+  margin: 0;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.app-header {
+  width: 100%;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+
+  background: #26332f;
+  color: white;
+}
+
+.app-logo {
+  font-size: 24px;
+}
+
+.menu-button {
+  border: 0;
+  padding: 8px;
+
+  background: transparent;
+  color: white;
+
+  font-size: 22px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+  border: 0;
+  border-radius: 4px;
+
+  padding: 12px 18px;
+
+  font-weight: 600;
+}
+
+.primary-button,
+form button[type="submit"] {
+  background: #5c8ff0;
+  color: white;
+}
+
+.secondary-button {
+  background: #00aa86;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.home {
+  min-height: calc(100vh - 58px);
+
+  background: linear-gradient(180deg, #ffffff 0%, #edfffa 100%);
+}
+
+.home-intro {
+  min-height: calc(100vh - 120px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  text-align: center;
+}
+
+.home-illustration {
+  font-size: 76px;
+}
+
+.home-intro h1 {
+  margin: 0;
+
+  color: #ef6678;
+  font-size: 30px;
+}
+
+.home-description {
+  max-width: 280px;
+
+  margin: 0;
+
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.home-intro .primary-button,
+.home-intro .secondary-button {
+  width: 100%;
+  max-width: 300px;
+}
+
+#how-info {
+  max-width: 300px;
+
+  padding: 14px;
+
+  border-radius: 8px;
+
+  background: white;
+
+  line-height: 1.5;
+}
+
+#home-message {
+  min-height: 20px;
+}
+
+#nearby-section h1 {
+  margin-bottom: 8px;
+
+  font-size: 23px;
+}
+
+#status {
+  margin-bottom: 24px;
+
+  color: #5b6662;
+}
+
+/* =========================
+   PET CARDS
+========================= */
+
+#pets-list,
+#my-pets-list {
+  display: grid;
+  gap: 18px;
+}
+
+.pet-card {
+  overflow: hidden;
+
+  border-radius: 8px;
+
+  background: #26332f;
+  color: white;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.pet-card__image {
+  display: block;
+
+  width: 100%;
+  height: 230px;
+
+  object-fit: cover;
+
+  background: #e8ecea;
+}
+
+.pet-card__content {
+  padding: 14px;
+}
+
+.pet-card__content h2 {
+  margin-bottom: 6px;
+
+  font-size: 26px;
+}
+
+.pet-card__content p {
+  margin: 0 0 14px;
+
+  font-size: 14px;
+}
+
+.report-button {
+  width: 100%;
+
+  background: #ef6678;
+  color: white;
+}
+
+.edit-pet-button {
+  width: 100%;
+
+  background: #5c8ff0;
+  color: white;
+}
+
+/* =========================
+   FORMS
+========================= */
+
+.auth-form,
+#profile-form,
+#password-form,
+#report-pet-form,
+#edit-pet-form,
+#report-form {
+  display: grid;
+  gap: 18px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+input,
+textarea {
+  width: 100%;
+
+  border: 1px solid #ccd5d1;
+  border-radius: 4px;
+
+  padding: 12px;
+
+  background: white;
+  color: #17211e;
+
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #5c8ff0;
+
+  box-shadow: 0 0 0 2px rgba(92, 143, 240, 0.16);
+}
+
+textarea {
+  min-height: 110px;
+
+  resize: vertical;
+}
+
+/* =========================
+   AUTH
+========================= */
+
+.auth-page {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: linear-gradient(180deg, #ffffff 0%, #edfffa 100%);
+}
+
+.auth-page h1 {
+  text-align: center;
+}
+
+.auth-page > button {
+  margin-top: 12px;
+
+  background: transparent;
+  color: #5c8ff0;
+}
+
+#auth-message {
+  min-height: 22px;
+
+  text-align: center;
+}
+
+/* =========================
+   PROFILE / MENU / PET PAGES
+========================= */
+
+.profile-page,
+.menu-page,
+.my-pets-page,
+.report-pet-page,
+.edit-pet-page {
+  min-height: 100vh;
+
+  background: linear-gradient(180deg, #ffffff 0%, #edfffa 100%);
+}
+
+.profile-page h1,
+.menu-page h1,
+.my-pets-page h1,
+.report-pet-page h1,
+.edit-pet-page h1 {
+  text-align: center;
+}
+
+.profile-options,
+.menu-options {
+  display: grid;
+  gap: 14px;
+}
+
+.profile-options button,
+.menu-options button {
+  width: 100%;
+
+  background: #5c8ff0;
+  color: white;
+}
+
+#back-menu,
+#back-profile,
+#back-my-pets,
+#cancel-report {
+  width: 100%;
+
+  margin-top: 14px;
+
+  background: #46534f;
+  color: white;
+}
+
+#go-password {
+  width: 100%;
+
+  margin-top: 16px;
+
+  background: #5c8ff0;
+  color: white;
+}
+
+#publish-pet {
+  width: 100%;
+
+  margin-top: 24px;
+
+  background: #00aa86;
+  color: white;
+}
+
+/* =========================
+   REPORT / EDIT PET
+========================= */
+
+#pet-preview,
+#edit-pet-image {
+  margin-top: 8px;
+
+  border-radius: 6px;
+}
+
+#use-location,
+#use-current-location {
+  background: #5c8ff0;
+  color: white;
+}
+
+#mark-found {
+  width: 100%;
+
+  margin-top: 18px;
+
+  background: #00aa86;
+  color: white;
+}
+
+#delete-pet {
+  width: 100%;
+
+  margin-top: 10px;
+
+  background: #ef6678;
+  color: white;
+}
+
+#report-pet-message,
+#edit-pet-message,
+#location-message,
+#profile-message,
+#password-message {
+  min-height: 22px;
+}
+
+/* =========================
+   REPORT MODAL
+========================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 200;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.58);
+}
+
+.modal__content {
+  position: relative;
+
+  width: 100%;
+  max-width: 420px;
+
+  padding: 28px 24px;
+
+  border-radius: 8px;
+
+  background: #26332f;
+  color: white;
+
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3);
+}
+
+.modal__content h2 {
+  max-width: 260px;
+
+  margin: 0 auto 24px;
+
+  text-align: center;
+
+  font-size: 28px;
+}
+
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  padding: 8px;
+
+  background: transparent;
+  color: white;
+
+  font-size: 20px;
+}
+
+#report-message {
+  margin-bottom: 0;
+
+  text-align: center;
+}
+
+/* =========================
+   MENU DRAWER
+========================= */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 300;
+
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.menu-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: min(82%, 330px);
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 80px 26px 30px;
+
+  background: #26332f;
+  color: white;
+
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.menu-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  padding: 8px;
+
+  background: transparent;
+  color: white;
+
+  font-size: 22px;
+}
+
+.drawer-options {
+  display: grid;
+  gap: 20px;
+}
+
+.drawer-options button {
+  width: 100%;
+
+  padding: 14px 0;
+
+  background: transparent;
+  color: white;
+
+  text-align: center;
+  font-size: 17px;
+}
+
+.drawer-session {
+  display: grid;
+  gap: 14px;
+
+  text-align: center;
+}
+
+#drawer-email {
+  margin: 0;
+
+  overflow-wrap: anywhere;
+
+  color: #d7dfdc;
+  font-size: 12px;
+}
+
+#drawer-login,
+#drawer-logout {
+  background: transparent;
+  color: #5c8ff0;
+
+  text-transform: uppercase;
+}
+
+/* =========================
+   DESKTOP
+========================= */
+@media (min-width: 700px) {
+  body {
+    background: #eef2f0;
+  }
+
+  #app {
+    width: 100%;
+    max-width: 600px;
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    background: white;
+
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* =========================
+   REPORT PET - FIGMA
+========================= */
+
+.report-pet-page {
+  min-height: calc(100vh - 58px);
+
+  padding: 36px 28px;
+
+  background: linear-gradient(180deg, #ffffff 0%, #edfffa 100%);
+}
+
+.report-pet-page h1 {
+  margin-bottom: 8px;
+
+  text-align: center;
+  font-size: 28px;
+}
+
+.report-pet-subtitle {
+  max-width: 320px;
+
+  margin: 0 auto 32px;
+
+  text-align: center;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+#report-pet-form {
+  display: grid;
+  gap: 22px;
+}
+
+.photo-section {
+  display: grid;
+  gap: 10px;
+}
+
+.photo-preview-box {
+  position: relative;
+
+  width: 100%;
+  height: 190px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 6px;
+
+  background: #e3e6e5;
+}
+
+.photo-placeholder {
+  font-size: 44px;
+
+  opacity: 0.45;
+}
+
+.pet-preview {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.file-input-hidden {
+  display: none;
+}
+
+.photo-button {
+  display: block;
+
+  width: 100%;
+
+  padding: 12px;
+
+  border-radius: 4px;
+
+  background: #5c8ff0;
+  color: white;
+
+  text-align: center;
+  text-transform: none;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.location-section {
+  display: grid;
+  gap: 12px;
+}
+
+.location-map-placeholder {
+  height: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+
+  background: linear-gradient(135deg, #c8e9df, #dce8f7);
+
+  font-size: 40px;
+}
+
+.location-help {
+  margin: 0;
+
+  text-align: center;
+
+  color: #555;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.location-button {
+  width: 100%;
+
+  background: #5c8ff0;
+  color: white;
+}
+
+.report-pet-submit {
+  width: 100%;
+
+  margin-top: 4px;
+
+  background: #00aa86 !important;
+  color: white;
+}
+
+.report-pet-cancel {
+  width: 100%;
+
+  background: #46534f !important;
+  color: white;
+}
+
+#location-message,
+#report-pet-message {
+  margin: 0;
+
+  text-align: center;
+  font-size: 13px;
+}
+
+.empty-reports-image {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  margin: 40px auto;
+  object-fit: contain;
+}
+
+.location-map {
+  width: 100%;
+  height: 260px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px 0;
+  z-index: 0;
+}
